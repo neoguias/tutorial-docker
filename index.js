@@ -1,21 +1,21 @@
 import express from 'express'
 import mongoose from 'mongoose'
 
+const app = express();
+app.use(express.json());
+
 const Plato = mongoose.model('Plato', new mongoose.Schema({
+  nombre: String,
   tipo: String,
-  tipo: String,
-}))
+}));
 
-const app = express()
-
-mongoose.connect('mongodb://edu:testpass@imongo:27017/restaurante?authSource=admin')
+mongoose.connect('mongodb://edu:testpass@imongo:27017/restaurante?authSource=admin');
 
 app.get('/platos', async (_req, res) => {
   console.log('Mostrando lista de platos...')
   const platos = await Plato.find();
   return res.send(platos)
-})
-
+});
 
 app.post('/platos', async (req, res) => {
   try {
@@ -34,4 +34,4 @@ app.post('/platos', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('listening...'))
+app.listen(3000, () => console.log('escuchando...'));
