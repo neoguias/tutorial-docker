@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 
 const Plato = mongoose.model('Plato', new mongoose.Schema({
   tipo: String,
-  estado: String,
+  tipo: String,
 }))
 
 const app = express()
